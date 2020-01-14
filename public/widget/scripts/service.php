@@ -14,8 +14,8 @@ if (method_exists('ISDEKservice', $action)) {
 class ISDEKservice
 {
 	// auth
-	 protected static $account = 'skyhigh';
-        protected static $key     = 'thistlemr1144';
+	 protected static $account = 'z9GRRu7FxmO53CQ9cFfI6qiy32wpfTkd';
+        protected static $key     = 'w24JTCv4MnAcuRTx0oHjHLDtyt3I6IBq';
 	
 
 	protected static $tarifPriority = false;

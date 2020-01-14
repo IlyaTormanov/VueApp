@@ -4,7 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <script id="ISDEKscript" type="text/javascript" src="./widget/widjet.js"></script>
+      <script id="ISDEKscript" type="text/javascript" src="https://widget.cdek.ru/widget/widjet.js"></script>
+
+
+
+
 
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title>untitled5</title>
@@ -13,18 +17,7 @@
     <noscript>
       <strong>We're sorry but untitled5 doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-    <script type="text/javascript">
-      const ourWidjet = new ISDEKWidjet({
-        defaultCity: 'Новосибирск', //какой город отображается по умолчанию
-        cityFrom: 'Омск', // из какого города будет идти доставка
-        country: 'Россия', // можно выбрать страну, для которой отображать список ПВЗ
-        link: 'forpvz', // id элемента страницы, в который будет вписан виджет
-        path: './widget/scripts/', //директория с библиотеками виджета
-        servicepath: './widget/scripts/service.php', //ссылка на файл service.php на вашем сайте
-        apikey: 'a150fe41-5452-4d81-83a8-0e8d31062325' // ключ для корректной работы Яндекс.Карт, получить необходимо тут
-      });
-    </script>
+
+<div id="app"></div>
   </body>
 </html>

@@ -1,42 +1,35 @@
 <template>
-    <div id="app">
+    <div id="root">
         <HeaderLayout/>
         <div class="content">
             <div class="promo">
                 <img alt="Vue logo" src="./assets/logo.png">
                 <div class="hello">Welcome to our transfer Application!</div>
             </div>
-            <Registration v-bind:api-hash="apiHash"></Registration>
-            <div id="forpvz"></div>
         </div>
-
+           <router-link to="/registration" ><div class="button">go login</div></router-link>
+            <router-view/>
         <FooterLayout/>
     </div>
 </template>
 <script>
-
-
-    import Registration from './components/Registration.vue'
-
-    import HeaderLayout from "@/components/HeaderLayout";
-    import FooterLayout from "@/components/FooterLayout";
-    // eslint-disable-next-line no-unused-vars
-    const registration = Registration;
-    // eslint-disable-next-line no-unused-vars
-
+import HeaderLayout from "@/components/HeaderLayout";
+import FooterLayout from "@/components/FooterLayout";
     export default {
-        name: 'app',
+
+        name: 'App',
         data: () => {
             return {
                 api_key: "0274696aa30f21c",
                 apiHash: "",
+
             }
         },
-        components: {
-            FooterLayout,
-            HeaderLayout,
 
-            Registration
+
+        components:{
+            HeaderLayout,
+            FooterLayout
         },
         created() {
             this.initialiseAPI()
@@ -79,7 +72,7 @@
         margin: 0 auto;
     }
 
-    #app {
+    #root {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -97,7 +90,7 @@
         box-sizing: border-box;
     }
     .content{
-     margin-top:60px;
+        margin-top:60px;
     }
     .hello {
         padding-bottom: 15px;
@@ -105,9 +98,20 @@
 
 
     }
+    .button{
+        background: #2c3e50;
+        color:white;
+        padding:10px;
+        width:140px;
+        border-radius:10px;
+        margin-top:20px;
+        cursor:pointer;
 
-    #forpvz {
-        width: 100%;
-        height: 600px;
     }
+    .button:hover{
+        background:lightblue;
+        color:#2c3e50;
+    }
+
+
 </style>

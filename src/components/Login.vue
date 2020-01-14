@@ -1,13 +1,13 @@
 <template>
     <div>
-    <head>
-        <script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit" async defer></script>
-    </head>
+
     <form>
         <input v-bind="login"/>
         <input v-bind="pass"/>
         <div>submit</div>
+
     </form>
+        <div>login</div>
     </div>
 </template>
 

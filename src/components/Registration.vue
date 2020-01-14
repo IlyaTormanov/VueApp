@@ -1,15 +1,16 @@
 <template>
     <div>
-
         <form action="registration">
             <label>Please,sign in</label>
             <input v-model="email" type="email" placeholder="email" name="email" class="input"/>
             <input v-model="password" type="password" placeholder="password" name="password" class="input"/>
 
 
-            <button type="button" class="button" @click="recaptcha">
-                submit
-            </button>
+                <button type="button" class="button" @click="recaptcha">
+                    submit
+                </button>
+
+
 
             {{userInfo}}
         </form>
@@ -17,6 +18,8 @@
 </template>
 
 <script>
+
+    import Login from "@/components/Login";
 
 
     export default {
@@ -41,8 +44,6 @@
                 }).then(token => {
                     this.token = token;
                     // eslint-disable-next-line no-console
-
-
                 }).then(()=>{
                     this.registrationAPI();
                 })
