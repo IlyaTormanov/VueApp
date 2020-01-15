@@ -6,11 +6,11 @@
             <input v-model="password" type="password" placeholder="password" name="password" class="input"/>
 
 
-                <router-link to="/login">
+
                     <button type="button" class="button" @click="recaptcha">
                         submit
                 </button>
-                </router-link>
+
 
 
 
@@ -99,26 +99,11 @@
         justify-content: center;
     }
 
-    .button {
-        width: 150px;
-        color: white;
-        background: #41b883;
-        padding: 10px;
-        font-weight: bolder;
-        border: none;
-        font-size: 16px;
-        border-radius: 6px;
-        cursor: pointer;
-        justify-self: flex-end;
 
-    }
 
-    .button:hover {
-        background: #2c3e50;
-    }
 
     .input {
-        border: 2px solid #41b883;
+
         padding: 15px;
         border-radius: 4px;
         font-size: 16px;

@@ -1,63 +1,124 @@
 <template>
     <div id="header">
-        <a>
-            Main
-        </a>
-        <a>
-            Contacts
-        </a>
-        <a>
-            About us
-        </a>
-        <div id="logotype">
-            <a>~TransferCars~</a>
+        <div class="navigation">
+            <div>home</div>
+            <div>shop</div>
+            <div>busket</div>
         </div>
-      <MdiAccountArrowLeft/>
+        <div id="logotype">
+            <span>Bostil</span>
+            <span>Support</span>
+        </div>
+        <div class="iconLayout">
+        <div class="navbar">
+            <div @click="showNav=!showNav" :class="!showNav?'open':'close'"></div>
+
+            <div :class="showNav?'set':'unset'">
+                <span>Twitter</span>
+                <span>FaceBook</span>
+                <span>Instagram</span>
+
+            </div>
+        </div>
+        <img src="../assets/search .png">
+        <img src="../assets/shop.png">
+        </div>
     </div>
 </template>
 
 <script>
-import {MdiAccountArrowLeft} from 'mdi-vue'
+
 
     export default {
-        name: "HeaderLayout"
+        name: "HeaderLayout",
+        data: () => ({
+            showNav: false,
+
+        })
     }
 </script>
 
 <style scoped>
     #header {
 
-        height: 60px;
+        height: 80px;
         position: fixed;
         padding: 10px;
         box-sizing: border-box;
-        background: #41b883;
+        background: #2c3e50;
         width: 100%;
         top: 0;
         color: white;
-        display: grid;
-        grid-template-areas: "logotype link link link link link link";
-        grid-template-columns: 30% repeat(5, auto);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+
         align-items: center;
 
     }
 
-    a {
-        cursor: pointer;
-        font-weight: bolder;
-        align-items: center;
-        vertical-align: middle;
-    }
+    .navigation{
+        display:grid;
+        grid-template-columns: repeat(3,auto);
+        grid-column-gap: 15px;
 
-    a:hover {
-        border-bottom: 1px solid white;
     }
+    .navbar {
+        position: relative;
+    }
+    #logotype{
+        display:flex;
+        flex-direction: column;
 
-    #logotype {
-        grid-area: logotype;
-        font-size: 24px;
-        font-style: Italic;
-        letter-spacing: 3px;
+    }
+    #logotype>span:last-child{
+        padding-top: 3px;
+        font-size: 1.6em;
+        letter-spacing: 1px;
+    }
+    #logotype>span:first-child{
+        text-transform: uppercase;
         font-weight: bold;
+        color:#e6b886;
+        letter-spacing: 2px;
+        font-size: 2.5em;
+
     }
+    .open:after {
+        display: block;
+        content: "We in social";
+    }
+    .iconLayout{
+        display:grid;
+        grid-template-columns: 120px repeat(2,max-content);
+        grid-column-gap: 15px;
+    }
+    .close:after {
+        content: url("../assets/cancel.png");
+        display: block;
+
+    }
+
+    .set {
+
+        display: flex;
+        margin-top: 20px;
+        flex-direction: column;
+        position: absolute;
+        background: #2c3e50;
+        padding: 10px;
+       right:-36px;
+        border-radius: 6px;
+    }
+
+    .set > span {
+        padding: 7px 0;
+
+    }
+
+    .unset {
+        display: none;
+    }
+
 </style>

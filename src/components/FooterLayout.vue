@@ -27,7 +27,7 @@
 
 <style scoped>
     #footer {
-        position: static;
+
         bottom: 0;
         background: #2c3e50;
         height: 100px;

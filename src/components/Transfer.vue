@@ -19,9 +19,7 @@
     });
     export default {
         name: "Transfer",
-        data:()=>{
 
-        }
     }
 </script>
 

@@ -1,49 +1,56 @@
 <template>
-    <div>
+    <div id="login">
+        <Welcome/>
+        <form>
+            <input v-model="login" type="email" placeholder="email" name="email" class="input"/>
+            <input v-model="pass" type="password" placeholder="password" name="password" class="input"/>
+            <div class="redirectReg"><span>Не зарегистрированы?</span><span class="go">Войти!</span></div>
+            <router-link to="transfer" class="button">
+                Войти
+            </router-link>
+        </form>
 
-    <form>
-        <input v-model="login" type="email" placeholder="email" name="email" class="input"/>
-        <input v-model="pass" type="password" placeholder="password" name="password" class="input"/>
 
 
-    </form>
-        <button type="button" class="button" @click="recaptcha">
-            submit
-        </button>
+
     </div>
 </template>
 
 <script>
 
 
-    const time_zone=(new Date().getTimezoneOffset() / 60) * (-1);
+    import Welcome from "@/components/Welcome";
+    const time_zone = (new Date().getTimezoneOffset() / 60) * (-1);
 
     export default {
         name: "Login",
-        data:()=>{
-           return{
-               login:"",
-               pass:"",
-               sitekey:""
-           }
-        },
+        components: {Welcome},
+        data: () => {
+            return {
+                login: "",
+                pass: "",
+                sitekey: ""
+            }
 
-        methods:{
-            signIn:function(){
+        },
+        props: ["apiHash"],
+
+        methods: {
+            signIn: function () {
                 return new Promise((resolve) => {
                     return fetch('https://weship2you.com/api/api/signin', {
 
                         method: 'post',
                         body: JSON.stringify({
-                            api_hash:this.apiHash,
+                            api_hash: this.apiHash,
                             credentials: {regEmail: this.login, regPassword: this.pass},
-                           time_zone:time_zone
+                            time_zone: time_zone
                         })
 
 
-                    }).then(res =>res.json())
+                    }).then(res => res.json())
                         .then(res => {
-                            this.apiHash=res.data.api_hash
+                            this.apiHash = res.data.api_hash
                             if (!res.errors)
 
                                 resolve();
@@ -62,28 +69,63 @@
 </script>
 
 <style scoped>
+    #login{
+        height:calc(100vh - 180px);
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        flex-direction: column;
+    }
+    .redirectReg{
+        color:gray;
+
+        text-align: end;
+    }
+    .redirectReg>span{
+        font-size:1.3em;
+        cursor:pointer;
+    }
     .button {
-        width: 150px;
-        color: white;
-        background: #41b883;
-        padding: 10px;
-        font-weight: bolder;
-        border: none;
-        font-size: 16px;
-        border-radius: 6px;
+       width:100%;
+    height: 40px;
+        border-radius: 10px;
+        border: solid 2px #00d2d2;
         cursor: pointer;
-        justify-self: flex-end;
+        background: transparent;
+        box-sizing: border-box;
+        font-weight: 600;
+        font-size: 16px;
+        padding: 0 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
     }
+    a{
+        text-decoration: none;
+        color: #00d2d2;
+    }
+    .button:hover {
+        color: #00d2d2;
+    }
+    .button:active {
+        background: #00d2d2;
+        color: #fff;
+    }
+.go{
+    color:#2c3e50;
+    font-size:1.3em;
+}
     .input {
-        border: 2px solid #41b883;
-        padding: 15px;
+        border:1px solid #f1f1f1;
+     background:#f1f1f1;
+        padding: 20px 10px;
+        color:gray;
         border-radius: 4px;
         font-size: 16px;
-        width: 240px;
+        width: 330px;
     }
 
-    .button:hover {
-        background: #2c3e50;
-    }
+
 </style>
