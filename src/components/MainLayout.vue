@@ -3,7 +3,7 @@
 
 
 
-    <router-view exact="Login"/>
+    <router-view exact="Login" :api-hash="apiHash"/>
 
     </div>
 </template>

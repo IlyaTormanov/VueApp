@@ -57,6 +57,33 @@
         align-items: center;
 
     }
+    #logotype>span:last-child{
+        padding-top: 3px;
+        font-size: 1.6em;
+        letter-spacing: 1px;
+    }
+    #logotype>span:first-child{
+        text-transform: uppercase;
+        font-weight: bold;
+        color:#e6b886;
+        letter-spacing: 2px;
+        font-size: 2.5em;
+
+    }
+    @media screen and (max-width:1366px){
+        #header{
+            height:60px;
+        }
+        #logotype>span:first-child{
+            font-size: 2em ;
+        }
+        #logotype>span:last-child{
+            padding-top: 3px;
+            font-size: 1.4em;
+
+        }
+    }
+
 
     .navigation{
         display:grid;
@@ -72,19 +99,7 @@
         flex-direction: column;
 
     }
-    #logotype>span:last-child{
-        padding-top: 3px;
-        font-size: 1.6em;
-        letter-spacing: 1px;
-    }
-    #logotype>span:first-child{
-        text-transform: uppercase;
-        font-weight: bold;
-        color:#e6b886;
-        letter-spacing: 2px;
-        font-size: 2.5em;
 
-    }
     .open:after {
         display: block;
         content: "We in social";

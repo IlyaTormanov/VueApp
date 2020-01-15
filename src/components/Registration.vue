@@ -2,18 +2,11 @@
     <div>
         <form action="registration">
             <label>Please,sign in</label>
-            <input v-model="email" type="email" placeholder="email" name="email" class="input"/>
-            <input v-model="password" type="password" placeholder="password" name="password" class="input"/>
-
-
-
-                    <button type="button" class="button" @click="recaptcha">
-                        submit
-                </button>
-
-
-
-
+          <Input name="login" placeholder="login" type="email" :on-change="onLogin"/>
+            <Input name="password" placeholder="password" type="password" :on-change="onPass"/>
+                   <routerLink to="login">
+                       <Button content="Завершить регистрацию!"/>
+                   </routerLink>
 
             {{userInfo}}
         </form>
@@ -21,19 +14,16 @@
 </template>
 
 <script>
-
-
-
-
+    import Button from "./Button";
+    import Input from "./Input";
     export default {
-
         name: 'Registration',
-
+        components: {Input, Button},
         props: ['apiHash'],
         data: function () {
 
             return {
-                email: "",
+                email:"",
                 password: "",
                 token: null,
                 userInfo: ""
@@ -41,6 +31,14 @@
         },
 
         methods: {
+            onLogin (e) {
+
+                   this.email=e.target.value
+
+            },
+            onPass(e){
+                this.pass=e.target.value
+            },
             recaptcha() {
                 this.$recaptchaLoaded().then(() => {
                     return this.$recaptcha('registration');

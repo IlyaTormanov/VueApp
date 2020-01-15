@@ -2,7 +2,7 @@
     <div id="root">
         <HeaderLayout/>
 
-        <router-view/>
+        <router-view :api-hash="apiHash"/>
 
         <FooterLayout/>
 
@@ -85,7 +85,7 @@ import Login from "@/components/Login";
         display: flex;
         flex-direction: column;
         min-height: 100vh;
-
+overflow:auto;
     }
 
 

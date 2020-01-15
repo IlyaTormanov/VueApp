@@ -2,11 +2,11 @@
     <div id="login">
         <Welcome/>
         <form>
-            <input v-model="login" type="email" placeholder="email" name="email" class="input"/>
-            <input v-model="pass" type="password" placeholder="password" name="password" class="input"/>
-            <div class="redirectReg"><span>Не зарегистрированы?</span><span class="go">Войти!</span></div>
-            <router-link to="transfer" class="button">
-                Войти
+            <Input  name="login" placeholder="login" type="email" :on-change="onLogin" />
+                <Input  name="pass" placeholder="password" type="password" :on-change="onPass" />
+            <div class="redirectReg"><span>Не зарегистрированы?</span><router-link to="registr" class="go">Регистрация.</router-link></div>
+            <router-link to="transfer" >
+                <Button content="Войти"/>
             </router-link>
         </form>
 
@@ -20,11 +20,13 @@
 
 
     import Welcome from "@/components/Welcome";
+    import Button from "./Button";
+    import Input from "./Input";
     const time_zone = (new Date().getTimezoneOffset() / 60) * (-1);
 
     export default {
         name: "Login",
-        components: {Welcome},
+        components: {Input, Button, Welcome},
         data: () => {
             return {
                 login: "",
@@ -36,6 +38,13 @@
         props: ["apiHash"],
 
         methods: {
+            onLogin(e){
+                this.login=e.target.value;
+
+            },
+            onPass(e){
+                this.pass=e.target.value
+            },
             signIn: function () {
                 return new Promise((resolve) => {
                     return fetch('https://weship2you.com/api/api/signin', {
@@ -86,46 +95,13 @@
         font-size:1.3em;
         cursor:pointer;
     }
-    .button {
-       width:100%;
-    height: 40px;
-        border-radius: 10px;
-        border: solid 2px #00d2d2;
-        cursor: pointer;
-        background: transparent;
-        box-sizing: border-box;
-        font-weight: 600;
-        font-size: 16px;
-        padding: 0 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
 
-    }
-    a{
-        text-decoration: none;
-        color: #00d2d2;
-    }
-    .button:hover {
-        color: #00d2d2;
-    }
-    .button:active {
-        background: #00d2d2;
-        color: #fff;
-    }
+
 .go{
     color:#2c3e50;
     font-size:1.3em;
 }
-    .input {
-        border:1px solid #f1f1f1;
-     background:#f1f1f1;
-        padding: 20px 10px;
-        color:gray;
-        border-radius: 4px;
-        font-size: 16px;
-        width: 330px;
-    }
+
 
 
 </style>

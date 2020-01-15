@@ -38,6 +38,11 @@
         width:100%;
         box-sizing: border-box;
     }
+    @media screen and (max-width:1366px){
+        #footer{
+            height:60px;
+        }
+    }
     #footer>div{
             display:flex;
         flex-direction: column;

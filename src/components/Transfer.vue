@@ -9,17 +9,19 @@
 <script>
 
 
-    var ourWidjet = new ISDEKWidjet ({
-        defaultCity: 'Санкт-Петербург',
-        cityFrom: 'Москва',
-        country: 'Россия',
-        link: 'forpvz',
-        path: 'https://www.cdek.ru/website/edostavka/template/scripts/',
 
-    });
     export default {
         name: "Transfer",
+        mounted() {
+            var ourWidjet = new ISDEKWidjet ({
+                defaultCity: 'Санкт-Петербург',
+                cityFrom: 'Москва',
+                country: 'Россия',
+                link: 'forpvz',
+                path: 'https://www.cdek.ru/website/edostavka/template/scripts/',
 
+            });
+        }
     }
 </script>
 
