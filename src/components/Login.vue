@@ -2,12 +2,14 @@
     <div>
 
     <form>
-        <input v-bind="login"/>
-        <input v-bind="pass"/>
-        <div>submit</div>
+        <input v-model="login" type="email" placeholder="email" name="email" class="input"/>
+        <input v-model="pass" type="password" placeholder="password" name="password" class="input"/>
+
 
     </form>
-        <div>login</div>
+        <button type="button" class="button" @click="recaptcha">
+            submit
+        </button>
     </div>
 </template>
 
@@ -60,5 +62,28 @@
 </script>
 
 <style scoped>
+    .button {
+        width: 150px;
+        color: white;
+        background: #41b883;
+        padding: 10px;
+        font-weight: bolder;
+        border: none;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        justify-self: flex-end;
 
+    }
+    .input {
+        border: 2px solid #41b883;
+        padding: 15px;
+        border-radius: 4px;
+        font-size: 16px;
+        width: 240px;
+    }
+
+    .button:hover {
+        background: #2c3e50;
+    }
 </style>

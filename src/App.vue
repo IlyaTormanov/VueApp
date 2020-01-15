@@ -7,8 +7,8 @@
                 <div class="hello">Welcome to our transfer Application!</div>
             </div>
         </div>
-           <router-link to="/registration" ><div class="button">go login</div></router-link>
-            <router-view/>
+           <router-link :to="{path:'/registration'}" ><div class="button">go registration</div></router-link>
+            <router-view :api-hash="apiHash"/>
         <FooterLayout/>
     </div>
 </template>
@@ -35,6 +35,7 @@ import FooterLayout from "@/components/FooterLayout";
             this.initialiseAPI()
         },
         methods: {
+
             initialiseAPI: function () {
 
                 return new Promise((resolve) => {

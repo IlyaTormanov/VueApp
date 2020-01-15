@@ -1,8 +1,5 @@
 <template>
     <div id="header">
-        <div id="logotype">
-            <a>~TransferCars~</a>
-        </div>
         <a>
             Main
         </a>
@@ -12,16 +9,16 @@
         <a>
             About us
         </a>
-        <a>
-            Price
-        </a>
-        <a>
-            Management
-        </a>
+        <div id="logotype">
+            <a>~TransferCars~</a>
+        </div>
+      <MdiAccountArrowLeft/>
     </div>
 </template>
 
 <script>
+import {MdiAccountArrowLeft} from 'mdi-vue'
+
     export default {
         name: "HeaderLayout"
     }

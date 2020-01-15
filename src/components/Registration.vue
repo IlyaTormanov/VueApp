@@ -6,9 +6,12 @@
             <input v-model="password" type="password" placeholder="password" name="password" class="input"/>
 
 
-                <button type="button" class="button" @click="recaptcha">
-                    submit
+                <router-link to="/login">
+                    <button type="button" class="button" @click="recaptcha">
+                        submit
                 </button>
+                </router-link>
+
 
 
 
@@ -19,7 +22,7 @@
 
 <script>
 
-    import Login from "@/components/Login";
+
 
 
     export default {
