@@ -100,6 +100,7 @@
 .go{
     color:#2c3e50;
     font-size:1.3em;
+    cursor:pointer;
 }
 
 

@@ -4,14 +4,18 @@
            :placeholder="placeholder"
            :name="name"
            :class="$style.input"
-
-           @change="onChange"/>
+           :readonly="isReadOnly"
+           :value="value"
+           :list="listName"
+           :autocomplete="autoComplete"
+           @change="onChange"
+    />
 </template>
 
 <script>
     export default {
         name: "Input",
-        props:["onChange","type","placeholder","name"],
+        props:["onChange","type","placeholder","name",'isReadOnly',"listName","autoComplete"],
         data:()=>{
             return{
                 value:"",
@@ -36,6 +40,7 @@
         padding: 20px 10px;
         color:gray;
         border-radius: 4px;
+        cursor:pointer;
         font-size: 16px;
         width: 330px;
     }

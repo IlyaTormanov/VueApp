@@ -30,7 +30,7 @@
         box-sizing: border-box;
     }
     .content{
-        margin-top:80px;
+
         flex: 1 1 auto;
         width:100%;
         flex-direction: column;

@@ -1,5 +1,5 @@
 <template>
-    <button type="button" :class="$style.button" @click="handleClick">
+    <button type="button" :class="isDisabled===false&&!isDisabled?$style.button:$style.disabled" @click="handleClick" >
         {{content}}
     </button>
 </template>
@@ -8,7 +8,7 @@
 
     export default {
         name: "Button",
-        props:['content',"handleClick"]
+        props:['content',"handleClick","isDisabled"],
 
 
     }
@@ -16,7 +16,7 @@
 
 <style module>
     .button {
-        width: 100%;
+        min-width: 200px;
         height: 40px;
         border-radius: 10px;
         border: solid 2px #00d2d2;
@@ -33,6 +33,7 @@
     }
     .button:hover {
         color: #00d2d2;
+
     }
     .button:active {
         background: #00d2d2;
@@ -42,5 +43,20 @@
         text-decoration: none;
         color: #00d2d2;
     }
-
+        .disabled{
+            background:gray !important;
+            min-width: 200px;
+            height: 40px;
+            border-radius: 10px;
+            border: solid 2px #00d2d2;
+            box-sizing: border-box;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 0 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color:#00d2d2;
+                cursor:unset !important;
+        }
 </style>

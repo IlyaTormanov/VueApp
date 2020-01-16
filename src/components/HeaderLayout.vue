@@ -42,7 +42,7 @@
     #header {
 
         height: 80px;
-        position: fixed;
+
         padding: 10px;
         box-sizing: border-box;
         background: #2c3e50;
