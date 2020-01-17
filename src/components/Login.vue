@@ -8,6 +8,7 @@
             <router-link to="transfer" >
                 <Button content="Войти"/>
             </router-link>
+
         </form>
 
 
@@ -31,7 +32,8 @@
             return {
                 login: "",
                 pass: "",
-                sitekey: ""
+                sitekey: "",
+
             }
 
         },

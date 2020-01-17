@@ -3,7 +3,7 @@
     <div id="transfer">
         <form class="form">
             <Input type="text" name="country" :is-read-only="true"/>
-            <Input type="text" name="city" list-name="cityList" :on-change="onCityChange" v-model="currentValue"
+            <Input type="text" name="city" list-name="cityList" :on-change="onCityChange" v-model="currentValue.name"
                    placeholder="Выберите город" auto-complete="off"/>
         </form>
         <dataList id="cityList">
@@ -12,10 +12,11 @@
                 {{item.name}}
             </option>
             <label class="city" :style="receiveStation.name.length===0?'display:none':'display:block'"
-                   v-on:click="flag=false"> {{receiveStation.name}}</label>
+                   v-on:click="flag=true"> {{receiveStation.name}}</label>
         </dataList>
-
-        <Button content="Выбрать ПВЗ" :is-disabled="flag" v-bind:handle-click="!flag?handlePvzButtonClick:alertModal"/>
+        <div v-if="!startWidget">Выберите город</div>
+        <p ref=”dom-element”>{{count}}</p>
+        <Button content="Выбрать ПВЗ" :is-disabled="flag" v-bind:handle-click="flag&&handlePvzButtonClick"/>
         <!--    <div @click="handlePvzButtonClick">check</div>-->
         <div id="forpvz" style="width:100%; height:600px;"></div>
 
@@ -30,9 +31,12 @@
 
     export default {
         name: "Transfer",
+            template:{
 
+            },
         data: () => {
             return {
+                count:0,
                 city: [
                     {
                         id: 0,
@@ -62,13 +66,13 @@
                 receiveStation: {id: '', name: ''},
                 currentValue: {id: "", name: ""},
                 filteredArr: [],
-                flag: true,
+                flag: false,
                 startWidget: false
             }
         },
         watch: {
             flag: function (bool) {
-                if (!bool) {
+                if (bool) {
                     this.startWidget = true
                 }
             },
@@ -90,6 +94,7 @@
 
         components: {Button, Input},
         methods: {
+
             handlePvzButtonClick: function () {
 
 
@@ -153,14 +158,17 @@
 
     label {
         width: 350px;
-        min-height: 60px;
+
         -webkit-box-shadow: 0px 3px 10px 0px rgba(148, 148, 148, 1);
         -moz-box-shadow: 0px 3px 10px 0px rgba(148, 148, 148, 1);
         box-shadow: 0px 3px 10px 0px rgba(148, 148, 148, 1);
         box-sizing: border-box;
         border-radius: 4px;
         border-bottom: 1px solid lightgray;
-        padding: 7px;
+        padding: 13px;
         cursor: pointer;
+        text-align: start;
+        font-size:1.3em;
+        font-weight: bold;
     }
 </style>

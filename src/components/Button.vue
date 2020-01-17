@@ -1,5 +1,5 @@
 <template>
-    <button type="button" :class="isDisabled===false&&!isDisabled?$style.button:$style.disabled" @click="handleClick" >
+    <button type="button" :class="isDisabled?$style.button:$style.disabled" @click="handleClick">
         {{content}}
     </button>
 </template>
@@ -48,7 +48,7 @@
             min-width: 200px;
             height: 40px;
             border-radius: 10px;
-            border: solid 2px #00d2d2;
+            border: none;
             box-sizing: border-box;
             font-weight: 600;
             font-size: 16px;
@@ -56,7 +56,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color:#00d2d2;
+            color:white;
                 cursor:unset !important;
         }
 </style>

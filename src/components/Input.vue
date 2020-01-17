@@ -5,7 +5,7 @@
            :name="name"
            :class="$style.input"
            :readonly="isReadOnly"
-           :value="value"
+
            :list="listName"
            :autocomplete="autoComplete"
            @change="onChange"
