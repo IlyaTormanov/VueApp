@@ -1,5 +1,5 @@
 <template>
-    <button type="button" :class="isDisabled?$style.button:$style.disabled" @click="handleClick">
+    <button type="button" :class="isDisabled===undefined||isDisabled===true?$style.button:isDisabled===false&&$style.disabled" @click="handleClick">
         {{content}}
     </button>
 </template>

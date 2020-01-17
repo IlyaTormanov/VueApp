@@ -1,5 +1,6 @@
 <template>
     <div id="header">
+
         <div class="navigation">
             <div>home</div>
             <div>shop</div>
@@ -22,19 +23,58 @@
         </div>
         <img src="../assets/search .png">
         <img src="../assets/shop.png">
+
         </div>
+        <router-link to="/login">
+        <div v-if="this.$route.path==='/transfer'" class="byeWrapper" >
+            <div class="bye" @click="byeApp">Выход</div>
+        </div>
+        </router-link>
     </div>
 </template>
 
 <script>
 
-
     export default {
         name: "HeaderLayout",
+        props:{
+            apiHash:String
+        },
         data: () => ({
             showNav: false,
 
-        })
+        }),
+        methods:{
+            byeApp:function(){
+                console.log("check")
+                return new Promise((resolve) => {
+                    return fetch('https://weship2you.com/api/api/signout', {
+                        method: 'post',
+
+                        body: JSON.stringify({
+                            'api_hash': this.apiHash,
+
+                        })
+
+
+                    }).then(res => res.json())
+                        .then(res => {
+                            this.apiHash = res.data.api_hash
+
+                            if (!res.errors) {
+
+
+                                resolve();
+
+                                return res.data.api_hash;
+                            }
+                        }).catch(() => {
+
+                            resolve();
+                        });
+                });
+            }
+        }
     }
 </script>
 
@@ -82,8 +122,41 @@
             font-size: 1.4em;
 
         }
+        .byeWrapper{
+            order:4;
+        }
+    }
+    @media screen and (max-width:500px){
+      .navigation{
+          order:2;
+
+      }
+        #header{
+            flex-wrap: wrap;
+            justify-content: space-between;
+            height:auto;
+        }
+        #logotype {
+            order: 1;
+        }
+        #logotype>span:first-child{
+            font-size:1.3em;
+        }
+        #logotype>span:last-child{
+            font-size:1.1em;
+        }
+        .iconLayout{
+            order:3;
+        }
     }
 
+    .bye{
+        background: #e01e5a;
+        padding:5px 15px;
+        color:white;
+        border-radius: 6px;
+        cursor:pointer;
+    }
 
     .navigation{
         display:grid;

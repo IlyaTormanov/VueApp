@@ -1,6 +1,6 @@
 <template>
     <div id="root">
-        <HeaderLayout/>
+        <HeaderLayout :api-hash="apiHash"/>
 
         <router-view :api-hash="apiHash"/>
 

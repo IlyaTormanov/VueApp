@@ -2,7 +2,7 @@
 <template>
     <div id="transfer">
         <form class="form">
-            <Input type="text" name="country" :is-read-only="true"/>
+            <Input type="text" name="country" :is-read-only="true" placeholder="Россия"/>
             <Input type="text" name="city" list-name="cityList" :on-change="onCityChange" v-model="currentValue.name"
                    placeholder="Выберите город" auto-complete="off"/>
         </form>
@@ -14,11 +14,13 @@
             <label class="city" :style="receiveStation.name.length===0?'display:none':'display:block'"
                    v-on:click="flag=true"> {{receiveStation.name}}</label>
         </dataList>
-        <div v-if="!startWidget">Выберите город</div>
-        <p ref=”dom-element”>{{count}}</p>
-        <Button content="Выбрать ПВЗ" :is-disabled="flag" v-bind:handle-click="flag&&handlePvzButtonClick"/>
+        <div v-if="!startWidget&&!flag" class="dangerous">Выберите город</div>
+
+        <Button content="Выбрать ПВЗ" :is-disabled="flag" v-bind:handle-click="handlePvzButtonClick"/>
         <!--    <div @click="handlePvzButtonClick">check</div>-->
-        <div id="forpvz" style="width:100%; height:600px;"></div>
+
+        <div id="forpvz" ></div>
+
 
     </div>
 </template>
@@ -36,7 +38,7 @@
             },
         data: () => {
             return {
-                count:0,
+
                 city: [
                     {
                         id: 0,
@@ -67,15 +69,12 @@
                 currentValue: {id: "", name: ""},
                 filteredArr: [],
                 flag: false,
-                startWidget: false
+                startWidget: false,
+
             }
         },
         watch: {
-            flag: function (bool) {
-                if (bool) {
-                    this.startWidget = true
-                }
-            },
+
 
 
             currentValue: function (val) {
@@ -97,22 +96,19 @@
 
             handlePvzButtonClick: function () {
 
+                if(this.flag) {
+                    new ISDEKWidjet({
+                        defaultCity: this.receiveStation.name,
+                        country: 'Россия',
+                        link: 'forpvz',
+                        path: 'https://www.cdek.ru/website/edostavka/template/scripts/',
 
-                const widget = new ISDEKWidjet({
-                    defaultCity: this.receiveStation.name,
+                    })
+                    this.startWidget=true;
 
-                    country: 'Россия',
-                    link: 'forpvz',
-                    path: 'https://www.cdek.ru/website/edostavka/template/scripts/',
-
-                })
-
+                }
 
             },
-            alertModal:function(){
-      alert("Сначала выберите город")
-    },
-
             checkStation: function (patt, station) {
                 const regexp = new RegExp(patt, "i");
                 return regexp.test(station.code) || regexp.test(station.name);
@@ -126,8 +122,8 @@
                     return value
                 }
             }
-        },
 
+    },
 
     }
 </script>
@@ -154,6 +150,7 @@
     #transfer {
         display: grid;
         grid-row-gap: 20px;
+
     }
 
     label {
@@ -170,5 +167,16 @@
         text-align: start;
         font-size:1.3em;
         font-weight: bold;
+    }
+    #forpvz{
+        width:60%;
+        height:500px;
+
+
+    }
+    .dangerous{
+        font-weight:bolder;
+        font-size:1.3em;
+
     }
 </style>
