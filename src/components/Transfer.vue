@@ -3,7 +3,7 @@
     <div id="transfer">
         <form class="form">
             <Input type="text" name="country" :is-read-only="true" placeholder="Россия"/>
-            <Input type="text" name="city" list-name="cityList" :on-change="onCityChange" v-model="currentValue.name"
+            <Input type="text" name="city" list-name="cityList" :on-change="onCityChange" v-model:value="currentValue"
                    placeholder="Выберите город" auto-complete="off"/>
         </form>
         <dataList id="cityList">
@@ -66,7 +66,7 @@
                     }
                 ],
                 receiveStation: {id: '', name: ''},
-                currentValue: {id: "", name: ""},
+                currentValue: "",
                 filteredArr: [],
                 flag: false,
                 startWidget: false,
@@ -78,6 +78,7 @@
 
 
             currentValue: function (val) {
+                console.log(val)
                 if (val.length < 2) return;
 
                 const filterArray = this.city.filter(station => this.checkStation(val, station));

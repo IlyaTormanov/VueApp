@@ -5,7 +5,8 @@
            :name="name"
            :class="$style.input"
            :readonly="isReadOnly"
-
+           v-bind:value="value"
+           v-on:input="$emit('input', $event.target.value)"
            :list="listName"
            :autocomplete="autoComplete"
            @change="onChange"
@@ -15,7 +16,7 @@
 <script>
     export default {
         name: "Input",
-        props:["onChange","type","placeholder","name",'isReadOnly',"listName","autoComplete"],
+        props:["onChange","type","placeholder","name",'isReadOnly',"listName","autoComplete","value"],
         data:()=>{
             return{
                 value:"",
