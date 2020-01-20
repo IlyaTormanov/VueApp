@@ -21,8 +21,14 @@
 
             </div>
         </div>
-        <img src="../assets/search .png">
-        <img src="../assets/shop.png">
+                <div class="right">
+                <input type="text" placeholder="search" v-if="setSearch" v-on:keyup.enter="setSearch=false"/>
+                <img src="../assets/search .png" v-else @click="setSearch=true">
+                <img src="../assets/shop.png">
+                </div>
+
+
+
 
         </div>
         <router-link to="/login">
@@ -42,7 +48,7 @@
         },
         data: () => ({
             showNav: false,
-
+            setSearch:false
         }),
         methods:{
             byeApp:function(){
@@ -96,6 +102,12 @@
 
         align-items: center;
 
+    }
+    .right{
+        min-width:300px;
+        display:grid;
+
+        grid-template-columns: repeat(2,auto);
     }
     #logotype>span:last-child{
         padding-top: 3px;
